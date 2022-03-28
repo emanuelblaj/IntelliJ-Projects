@@ -10,9 +10,19 @@ public class Rabbit implements Cloneable {
 //    age in months
     private int age;
     private Breed breed;
+    private Person owner;
 
     public Rabbit() {
 
+    }
+
+    public Person getOwner() {
+        return owner;
+    }
+
+    public void setOwner(String name) {
+        Person owner =new Person(name);
+        this.owner = owner;
     }
 
     public Rabbit(int age, Breed breed) {
@@ -39,7 +49,9 @@ public class Rabbit implements Cloneable {
     @Override
     public Rabbit clone() {
         try{
-            return (Rabbit) super.clone();
+            Rabbit rabbit = (Rabbit) super.clone();
+            rabbit.owner = owner.clone();
+            return rabbit;
         } catch (CloneNotSupportedException ex) {
             throw new AssertionError();
         }
