@@ -1,0 +1,16 @@
+import java.util.ArrayList;
+
+public class Chocolate_white extends Candy{
+
+    @Override
+    ArrayList<Candy> makeCandyPackage(int quantity) {
+        ArrayList chocolatePackage= new ArrayList<>();
+        for (int i = 1; i <= quantity;i++) {
+            Chocolate_white chocolate_white = new Chocolate_white();
+            chocolatePackage.add(chocolate_white);
+
+        }
+        System.out.println("One package of " + quantity + " white chocolates has been made!" );
+        return chocolatePackage;
+    }
+}
