@@ -1,16 +1,19 @@
 import java.util.ArrayList;
 
-public class ChocolateFactory extends Candy{
+public class ChocolateFactory extends CandyFactory{
 
     @Override
-    ArrayList<Candy> makeCandyPackage(int quantity) {
-        ArrayList chocolatePackage = new ArrayList();
-        for (int i = 1; i <= quantity;i++) {
-            ChocolateFactory chocolate = new ChocolateFactory();
-            chocolatePackage.add(chocolate);
-        }
+    public Candy getCandy(String section) {
 
-        System.out.println("One package of " + quantity + " chocolates has been made!");
-        return chocolatePackage;
-     }
+            switch (section) {
+                case "dark":
+                    return new Chocolate_dark();
+                case "milk":
+                    return new Chocolate_milk();
+                case "white":
+                    return new Chocolate_white();
+                default:
+                    return new Chocolate_milk();
+            }
+    }
 }
