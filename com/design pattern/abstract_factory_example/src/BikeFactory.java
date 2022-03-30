@@ -1,6 +1,8 @@
 public abstract class BikeFactory {
 
-    abstract Tire createTire();
+    abstract BikePart create(String type);
 
-    abstract HandleBar createHandlebar();
+   /* abstract Tire createTire();
+
+    abstract HandleBar createHandlebar();*/
 }

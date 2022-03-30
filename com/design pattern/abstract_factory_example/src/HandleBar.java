@@ -1,4 +1,5 @@
-public abstract class HandleBar {
+public abstract class HandleBar extends BikePart {
 
+    @Override
     abstract void getDescription();
 }

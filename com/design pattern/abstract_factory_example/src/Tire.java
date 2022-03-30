@@ -1,4 +1,4 @@
-public abstract class Tire {
+public abstract class Tire extends BikePart{
 
     abstract void getDescription();
 }
