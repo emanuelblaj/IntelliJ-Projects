@@ -23,6 +23,8 @@ public class Algorithms  {
         thirdNode.next = fourthNode;
 
         linkedList.displayContents();
+        linkedList.deleteKthNodeFromEnd(3);
+        linkedList.displayContents();
         linkedList.deleteBackHalf();
         linkedList.displayContents();
 
