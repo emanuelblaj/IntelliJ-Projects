@@ -5,29 +5,20 @@ import java.util.stream.Stream;
 
 public class Algorithms  {
 
-    public static List<Integer> findMissingElements(int[] first, int[] second) {
-        List<Integer> missingElements = new ArrayList<>();
-        HashSet<Integer> hashSet = new HashSet<>();
-        for(int x : second){
-            hashSet.add(x);
-        }
-
-        for (int x : first ) {
-            if(!hashSet.contains(x)) {
-                missingElements.add(x);
+    public static void displayFreqOfEachElement(int[] arr) {
+        HashMap<Integer, Integer> freqMap =  new HashMap<>();
+        for (int x : arr) {
+            if (!freqMap.containsKey(x)) {
+                freqMap.put(x, 1);
+            } else {
+                freqMap.put(x, freqMap.get(x) + 1);
             }
-
-
         }
-        return missingElements;
+
+        freqMap.forEach((key, value) -> System.out.println(key + " : " +  value ));
     }
 
     public static void main(String[] args) {
-        findMissingElements(new int[]{1, 2, 3 ,4},
-                new int[] {1, 3}).forEach(System.out::println);
-        System.out.println();
-
-        findMissingElements(new int[] {8, 0, 1, 7,3},
-                new int[] {5, 7, 8, 0, 2}).forEach(System.out::println);
+        displayFreqOfEachElement(new int[]{4, 1, 3, 4, 5, 8, 3, 4 , 4, 4, 6, 5});
  }
 }
