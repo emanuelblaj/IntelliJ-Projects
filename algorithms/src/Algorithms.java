@@ -5,27 +5,40 @@ import java.util.stream.Stream;
 
 public class Algorithms  {
 
-
-
     public static void main(String[] args) {
 
-        CustomLinkedList noCycleLinkedList = new CustomLinkedList();
-        Node firstNode = new Node(3);
-        Node secondNode = new Node(4);
-        Node thirdNode = new Node(5);
-        Node fourthNode = new Node(6);
+        Node rootNode = new Node();
+        rootNode.data = 5;
+        Node nodeTwo = new Node();
+        nodeTwo.data = 2;
+        Node nodeFour = new Node();
+        nodeFour.data = 4;
+        Node nodeNine = new Node();
+        nodeNine.data = 9;
+        Node nodeTen = new Node();
+        nodeTen.data = 10;
+        Node nodeSeven = new Node();
+        nodeSeven.data = 7;
 
-        noCycleLinkedList.head = firstNode;
-        firstNode.next = secondNode;
-        secondNode.next = thirdNode;
-        thirdNode.next = fourthNode;
+        rootNode.left = nodeTwo;
+        rootNode.right = nodeFour;
+        nodeTwo.left = nodeNine;
+        nodeTwo.right = nodeTen;
+        nodeFour.left = nodeSeven;
 
-        System.out.println(noCycleLinkedList.hashCycle());
+        BinaryTree tree = new BinaryTree();
+        tree.root = rootNode;
 
-        CustomLinkedList cycleLinkedList = new CustomLinkedList();
-        cycleLinkedList.head = firstNode;
-        thirdNode.next = secondNode;
+        System.out.print("Pre Order Traversal: " );
+        tree.preOrderTraversal();
+        System.out.println();
 
-        System.out.println(cycleLinkedList.hashCycle());
+        System.out.print("In Order Traversal: ");
+        tree.inOrderTraversal();
+        System.out.println();
+
+        System.out.print("Post Order Traversal: ");
+        tree.postOrderTraversal();
+        System.out.println();
  }
 }

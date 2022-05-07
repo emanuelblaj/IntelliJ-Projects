@@ -1,9 +1,6 @@
 public class Node {
-    int data;
-    Node next;
+  Node left;
+  Node right;
+  int data;
 
-    public Node(int data) {
-        this.data = data;
-
-    }
 }
