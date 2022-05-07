@@ -1,37 +1,43 @@
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.Queue;
+import java.util.*;
 import java.util.function.IntPredicate;
 import java.util.stream.Stream;
 
 
 public class Algorithms  {
 
-    public static void printBinary(int n) {
-        if(n <= 0) {
+    public static void printNextGreaterElement(int[] arr) {
+        if (arr.length == 0) {
             System.out.println();
             return;
         }
 
-        Queue<Integer> queue = new LinkedList<>();
-        queue.add(1);
-        for (int i = 0; i < n; i++) {
-            int current = queue.remove();
-            System.out.println(current);
+        Stack<Integer> stack = new Stack<>();
+        stack.push(arr[0]);
 
-            queue.add(current * 10);
-            queue.add(current * 10 + 1);
+        for (int i = 1; i < arr.length; i++) {
+            int next = arr[i];
+            if(!stack.isEmpty()) {
+                int popped = stack.pop();
+                while (popped < next) {
+                    System.out.println(popped + " -->" + next);
+                    if (stack.isEmpty()) {
+                        break;
+                    }
+                    popped = stack.pop();
+                }
+                if (popped > next) {
+                    stack.push(popped);
+                }
+            }
+            stack.push(next);
         }
-        System.out.println();
+        while (!stack.isEmpty()) {
+            System.out.println(stack.pop() + " --> " + -1);
+        }
     }
-
     public static void main(String[] args) {
-        printBinary(3);
-        printBinary(-5);
-        printBinary(0);
-        printBinary(2);
-        printBinary(9);
+
+        printNextGreaterElement(new int[]{16, 7, 2, 15});
 
 
  }
