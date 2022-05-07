@@ -5,40 +5,29 @@ import java.util.stream.Stream;
 
 public class Algorithms  {
 
-    public static void printNextGreaterElement(int[] arr) {
-        if (arr.length == 0) {
-            System.out.println();
-            return;
+    public static List<Integer> findMissingElements(int[] first, int[] second) {
+        List<Integer> missingElements = new ArrayList<>();
+        HashSet<Integer> hashSet = new HashSet<>();
+        for(int x : second){
+            hashSet.add(x);
         }
 
-        Stack<Integer> stack = new Stack<>();
-        stack.push(arr[0]);
-
-        for (int i = 1; i < arr.length; i++) {
-            int next = arr[i];
-            if(!stack.isEmpty()) {
-                int popped = stack.pop();
-                while (popped < next) {
-                    System.out.println(popped + " -->" + next);
-                    if (stack.isEmpty()) {
-                        break;
-                    }
-                    popped = stack.pop();
-                }
-                if (popped > next) {
-                    stack.push(popped);
-                }
+        for (int x : first ) {
+            if(!hashSet.contains(x)) {
+                missingElements.add(x);
             }
-            stack.push(next);
+
+
         }
-        while (!stack.isEmpty()) {
-            System.out.println(stack.pop() + " --> " + -1);
-        }
+        return missingElements;
     }
+
     public static void main(String[] args) {
+        findMissingElements(new int[]{1, 2, 3 ,4},
+                new int[] {1, 3}).forEach(System.out::println);
+        System.out.println();
 
-        printNextGreaterElement(new int[]{16, 7, 2, 15});
-
-
+        findMissingElements(new int[] {8, 0, 1, 7,3},
+                new int[] {5, 7, 8, 0, 2}).forEach(System.out::println);
  }
 }
