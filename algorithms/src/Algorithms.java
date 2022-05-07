@@ -5,20 +5,27 @@ import java.util.stream.Stream;
 
 public class Algorithms  {
 
-    public static void displayFreqOfEachElement(int[] arr) {
-        HashMap<Integer, Integer> freqMap =  new HashMap<>();
-        for (int x : arr) {
-            if (!freqMap.containsKey(x)) {
-                freqMap.put(x, 1);
-            } else {
-                freqMap.put(x, freqMap.get(x) + 1);
-            }
-        }
 
-        freqMap.forEach((key, value) -> System.out.println(key + " : " +  value ));
-    }
 
     public static void main(String[] args) {
-        displayFreqOfEachElement(new int[]{4, 1, 3, 4, 5, 8, 3, 4 , 4, 4, 6, 5});
+
+        CustomLinkedList noCycleLinkedList = new CustomLinkedList();
+        Node firstNode = new Node(3);
+        Node secondNode = new Node(4);
+        Node thirdNode = new Node(5);
+        Node fourthNode = new Node(6);
+
+        noCycleLinkedList.head = firstNode;
+        firstNode.next = secondNode;
+        secondNode.next = thirdNode;
+        thirdNode.next = fourthNode;
+
+        System.out.println(noCycleLinkedList.hashCycle());
+
+        CustomLinkedList cycleLinkedList = new CustomLinkedList();
+        cycleLinkedList.head = firstNode;
+        thirdNode.next = secondNode;
+
+        System.out.println(cycleLinkedList.hashCycle());
  }
 }
