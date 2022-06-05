@@ -28,14 +28,26 @@ public class JdbcTest {
                             "('Wright', 'Eric', 'eric.wirght@foo.com', 'HR', '33000.00')");*/
 
 //            Call helper method to display the employee's information
-            System.out.println("BEFORE THE UPDATE...");
+            System.out.println("BEFORE THE DELETE...");
             displayEmployee(myConn, "John", "Doe");
 
+
+//            DELETE the employee
+            System.out.println("\nDELETING THE EMPLOYEE: John Doe\n");
+            int rowAffected = myStmt.executeUpdate(
+                    "delete from employees " +
+                            "where last_name='Doe' and first_name='John' ");
+
+//            Call helper metho to display the employee's information
+            System.out.println("AFTER THE DELETE...");
+            displayEmployee(myConn, "John", "Doe");
+/*
 //            UPDATE the employee
             System.out.println("\nEXECUTING THE UPDATE FOR: John Doe\n");
             int rowUpdate = myStmt.executeUpdate("update employees " +
                     "set email = 'john.dow@luv2code.com' " +
                     "where last_name = 'Doe' and first_name= 'John'");
+*/
 
 //            4. Execute SQL query
            /* myRs = myStmt.executeQuery("select * from employees");
@@ -65,15 +77,25 @@ public class JdbcTest {
 
             myStmt.setString(1, lastName);
             myStmt.setString(2,firstName);
+
 //            Execute SQL query
             myRs = myStmt.executeQuery();
 
+
 //            Process result set
+            boolean found = false;
+
             while (myRs.next()) {
                 String theLastName = myRs.getString("last_name");
                 String theFirstName= myRs.getString("first_name");
                 String email = myRs.getString("email");
-                System.out.printf("%s  %s, %s\n", theFirstName, theLastName, email);
+
+                System.out.printf("Found employee: %s  %s, %s\n", theFirstName, theLastName, email);
+                found = true;
+            }
+
+            if (!found) {
+                System.out.println("Employee NOT FOUND: " + firstName + " " + lastName);
             }
         } catch (Exception exc) {
             exc.printStackTrace();
