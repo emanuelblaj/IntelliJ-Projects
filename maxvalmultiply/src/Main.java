@@ -1,28 +1,29 @@
+import java.util.HashMap;
+
 public class Main {
     public static void main(String[] args) {
-        int[] t1 = {5, 3, 2, 5, 7, 0, 1};
-        int[] t2 = {-2, -1, -3, 4, 8, 0};
-        int[] t3 = {-20, -10, 3, 9, -8};
+        HashMap<String, Integer> wordToNum = new HashMap<>();
 
-        MaxProductInterpreter max = new MaxProductInterpreter();
+        /*Insert key-and-value pairs into the hashmap*/
+        wordToNum.put("ONE", 1);
+        wordToNum.put("TWO", 2);
+        wordToNum.put("THREE",3);
+        wordToNum.put("FOUR",4);
+        wordToNum.put("FIVE",5);
 
-        System.out.println("Max product1: ");
-        System.out.println(max.maximumProduct(t1));
-        System.out.println(max.maximumProduct(t2));
-        System.out.println(max.maximumProduct(t3));
+//        Retrieve elements
+        System.out.println("Retrieve element: " + wordToNum.get("THREE"));
 
-        System.out.println();
-        System.out.println("Max product2:");
+//        List values and keys
+        System.out.println(wordToNum.values());
+        System.out.println(wordToNum.keySet());
 
-        System.out.println(max.maximumProduct2(t1));
-        System.out.println(max.maximumProduct2(t2));
-        System.out.println(max.maximumProduct2(t3));
+//        Remove elements
+        System.out.println(wordToNum.remove("FOUR"));
 
-        System.out.println();
-        System.out.println("Max product3:");
-        System.out.println(max.maximumProduct3(t1));
-        System.out.println(max.maximumProduct3(t2));
-        System.out.println(max.maximumProduct3(t3));
+        System.out.println(wordToNum.values());
+        System.out.println(wordToNum.keySet());
+
 
 
     }
